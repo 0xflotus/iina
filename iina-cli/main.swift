@@ -77,11 +77,7 @@ if let dashIndex = userArgs.index(of: "--") {
   for i in dashIndex..<userArgs.count {
     let arg = userArgs[i]
     if arg.hasPrefix("--") {
-      if arg.hasPrefix("--no-") {
-        userArgs[i] = "--mpv-\(arg.dropFirst(5))=no"
-      } else {
-        userArgs[i] = "--mpv-\(arg.dropFirst(2))"
-      }
+      userArgs[i] = arg.hasPrefix("--no-") ? "--mpv-\(arg.dropFirst(5))=no" : "--mpv-\(arg.dropFirst(2))"
     }
   }
 }
